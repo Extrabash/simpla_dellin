@@ -56,6 +56,10 @@ class DeliveryAdmin extends Simpla
 		$payment_methods = $this->payment->get_payment_methods();
 		$this->design->assign('payment_methods', $payment_methods);
 
+		// Вызовем модули доставки в шаблон
+		$delivery_modules = $this->delivery->get_delivery_modules();
+		$this->design->assign('delivery_modules', $delivery_modules);
+
 		$this->design->assign('delivery', $delivery);
 
   	  	return $this->design->fetch('delivery.tpl');
