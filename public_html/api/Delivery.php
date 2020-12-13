@@ -133,4 +133,25 @@ class Delivery extends Simpla
 
 	}
 
+	function get_delivery_settings($method_id)
+	{
+		$query = $this->db->placehold("SELECT settings FROM __delivery WHERE id=? LIMIT 1", intval($method_id));
+		$this->db->query($query);
+		$settings = $this->db->result('settings');
+
+		$settings = unserialize($settings);
+		return $settings;
+	}
+
+	public function update_delivery_settings($method_id, $settings)
+	{
+		if(!is_string($settings))
+		{
+			$settings = serialize($settings);
+		}
+		$query = $this->db->placehold("UPDATE __delivery SET settings=? WHERE id in(?@) LIMIT 1", $settings, (array)$method_id);
+		$this->db->query($query);
+		return $method_id;
+	}
+
 }

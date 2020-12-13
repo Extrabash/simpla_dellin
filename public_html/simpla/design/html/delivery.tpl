@@ -52,7 +52,6 @@
 	<div id="product_categories">
 	    <select name="module">
 			<option value='null'>Ручная обработка</option>
-			<option value='0' {if !$delivery->module}selected{/if}>Стандартный обработчик</option>
 	        {foreach $delivery_modules as $delivery_module}
     	        <option value='{$delivery_module@key|escape}' {if $delivery->module == $delivery_module@key}selected{/if} >{$delivery_module->name|escape}</option>
 	        {/foreach}
@@ -61,6 +60,32 @@
 
 	<!-- Левая колонка свойств товара -->
 	<div id="column_left">
+		{if $delivery_modules[$delivery->module]->settings}
+		<div class="block layer">
+			<h2>Настройки - {$delivery_modules[$delivery->module]->name}</h2>
+			{* Параметры модуля доставки *}
+			<ul>
+			   	{foreach $delivery_modules[$delivery->module]->settings as $setting}
+    			    {$variable_name = $setting->variable}
+    			    {if $setting->options|@count>1}
+        			    <li><label class=property>{$setting->name}</label>
+        			        <select name="delivery_settings[{$setting->variable}]">
+        			            {foreach $setting->options as $option}
+            			            <option value='{$option->value}' {if $option->value==$delivery_settings[$setting->variable]}selected{/if}>{$option->name|escape}</option>
+        			            {/foreach}
+        			        </select>
+        			    </li>
+    			    {elseif $setting->options|@count==1}
+        			    {$option = $setting->options|@first}
+        			    <li><label class="property" for="{$setting->variable}">{$setting->name|escape}</label><input name="delivery_settings[{$setting->variable}]" class="simpla_inp" type="checkbox" value="{$option->value|escape}" {if $option->value==$delivery_settings[$setting->variable]}checked{/if} id="{$setting->variable}" /> <label for="{$setting->variable}">{$option->name}</label></li>
+    			    {else}
+        			    <li><label class="property" for="{$setting->variable}">{$setting->name|escape}</label><input name="delivery_settings[{$setting->variable}]" class="simpla_inp" type="text" value="{$delivery_settings[$setting->variable]|escape}" id="{$setting->variable}" /></li>
+    			    {/if}
+			    {/foreach}
+			</ul>
+			{* END Параметры модуля доставки *}
+		</div>
+		{/if}
 		<!-- Параметры страницы -->
 		<div class="block layer">
 			<h2>Стоимость доставки</h2>

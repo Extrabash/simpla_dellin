@@ -18,6 +18,9 @@ class DeliveryAdmin extends Simpla
 			$delivery->separate_payment	= $this->request->post('separate_payment');
 			$delivery->module			= $this->request->post('module', 'string');
 
+			// Модуль доставки - настройки 1
+			$delivery_settings = $this->request->post('delivery_settings');
+
 	 		if(!$delivery_payments = $this->request->post('delivery_payments'))
 	 			$delivery_payments = array();
 
@@ -27,19 +30,21 @@ class DeliveryAdmin extends Simpla
 		        }
 		        else
 		        {
-		             if(empty($delivery->id))
-		             {
-		                 $delivery->id = $this->delivery->add_delivery($delivery);
-		                 $this->design->assign('message_success', 'added');
-		             }
-		             else
-		             {
-		                 $this->delivery->update_delivery($delivery->id, $delivery);
-		                 $this->design->assign('message_success', 'updated');
-		             }
+					if(empty($delivery->id))
+					{
+						$delivery->id = $this->delivery->add_delivery($delivery);
+						$this->design->assign('message_success', 'added');
+					}
+					else
+					{
+						$this->delivery->update_delivery($delivery->id, $delivery);
+						$this->design->assign('message_success', 'updated');
+					}
 
-			     $this->delivery->update_delivery_payments($delivery->id, $delivery_payments);
-		         }
+					$this->delivery->update_delivery_payments($delivery->id, $delivery_payments);
+					// Модуль доставки - настройки 2
+					$this->delivery->update_delivery_settings($delivery->id, $delivery_settings);
+		        }
 		}
 		else
 		{
@@ -49,7 +54,13 @@ class DeliveryAdmin extends Simpla
 				$delivery = $this->delivery->get_delivery($delivery->id);
 			}
 			$delivery_payments = $this->delivery->get_delivery_payments($delivery->id);
+			$delivery_settings = $this->delivery->get_delivery_settings($delivery->id);
 		}
+
+
+		$this->design->assign('delivery_settings', $delivery_settings);
+
+		// Модуль доставки - настройки 3
 		$this->design->assign('delivery_payments', $delivery_payments);
 
 		// Все способы оплаты

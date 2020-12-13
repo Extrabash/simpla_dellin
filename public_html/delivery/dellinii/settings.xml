@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+    <name>
+        Деловые линии
+    </name>
+    <settings>
+        <variable>appkey</variable>
+        <name>Ключ API</name>
+    </settings>
+    <settings>
+        <variable>derivalPoint</variable>
+        <name>Кладр код места отправки</name>
+    </settings>
+</module>

@@ -1,8 +1,8 @@
 @import url("reset.css");
 @import url("main.css");
 
-/* Сообщение */
-.message { 
+/* Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ */
+.message {
 	clear: both;
 	height: 25px;
 	padding: 10px 20px;
@@ -44,37 +44,37 @@
 .message span.share img{
 	height: 27px;
 	opacity:0.3;
-	filter:alpha(opacity=30);	
+	filter:alpha(opacity=30);
 }
 .message span.share img:hover{
 	height: 27px;
 	opacity:1;
-	filter:alpha(opacity=100);	
+	filter:alpha(opacity=100);
 }
-/* Сообщение успешное */
+/* Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾Ðµ */
 .message_success { background-color: #c5ff8d; border: 1px dotted #8cbf32; }
 .message_success span.text{	background-image: url(../images/tick.png); }
 .message_success a.link { color: #3f8000; }
 .message_success a.link:hover {	color: #5dbd00; }
 
-/* Сообщение с ошибкой */
+/* Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ñ Ð¾ÑˆÐ¸Ð±ÐºÐ¾Ð¹ */
 .message_error { background-color: #ffcaca; border: 1px dotted #ff4545; }
 .message_error span.text { background-image: url(../images/icon_message_error.png); }
 .message_error a.link { color: #ff0000; }
 .message_error a.link:hover { color: #ff4f4f; }
 
-/* Основная форма */
+/* ÐžÑÐ½Ð¾Ð²Ð½Ð°Ñ Ñ„Ð¾Ñ€Ð¼Ð° */
 #product {
 	width: 100%;
 }
-/* Блок названия */
+/* Ð‘Ð»Ð¾Ðº Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ */
 #product #name {
 	display: table;
 	width: 100%;
 	margin-bottom: 20px;
 	/*height: 30px;*/
 }
-/* Инпут названия */
+/* Ð˜Ð½Ð¿ÑƒÑ‚ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ */
 #product input.name {
 	font-size: 26px;
 	display: table-cell;
@@ -82,7 +82,7 @@
     *float: left;
     *width: 70%;
 }
-/* Блок чекбоксов возле названия */
+/* Ð‘Ð»Ð¾Ðº Ñ‡ÐµÐºÐ±Ð¾ÐºÑÐ¾Ð² Ð²Ð¾Ð·Ð»Ðµ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ */
 #product .checkbox{
 	display: table-cell;
 	white-space: nowrap;
@@ -96,40 +96,40 @@
     *width: 12%;
     *float: left;
 }
-/* Надпись возле чекбокса */
+/* ÐÐ°Ð´Ð¿Ð¸ÑÑŒ Ð²Ð¾Ð·Ð»Ðµ Ñ‡ÐµÐºÐ±Ð¾ÐºÑÐ° */
 #product .checkbox label {
 	cursor: pointer;
 }
-/* Блок с выбором бренда */
+/* Ð‘Ð»Ð¾Ðº Ñ Ð²Ñ‹Ð±Ð¾Ñ€Ð¾Ð¼ Ð±Ñ€ÐµÐ½Ð´Ð° */
 #product_brand {
 	float: left;
 	width: 300px;
 	display: block;
 }
-/* Надпись возде выбора бренда */
+/* ÐÐ°Ð´Ð¿Ð¸ÑÑŒ Ð²Ð¾Ð·Ð´Ðµ Ð²Ñ‹Ð±Ð¾Ñ€Ð° Ð±Ñ€ÐµÐ½Ð´Ð° */
 #product_brand label {
 	float: left;
 	margin-top: 5px;
 }
-/* Селект бренда */
+/* Ð¡ÐµÐ»ÐµÐºÑ‚ Ð±Ñ€ÐµÐ½Ð´Ð° */
 #product_brand select{
 	width: 200px;
 	margin-left: 10px;
 	font-size: 18px;
 }
 
-/* Блок категорий товара */
+/* Ð‘Ð»Ð¾Ðº ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹ Ñ‚Ð¾Ð²Ð°Ñ€Ð° */
 #product_categories {
 	float: left;
 	overflow: hidden;
 	margin-bottom: 20px;
 }
-/* Надпись возде выбора категории */
+/* ÐÐ°Ð´Ð¿Ð¸ÑÑŒ Ð²Ð¾Ð·Ð´Ðµ Ð²Ñ‹Ð±Ð¾Ñ€Ð° ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ */
 #product_categories label {
 	float: left;
 	margin-top: 5px;
 }
-/* Селект категории */
+/* Ð¡ÐµÐ»ÐµÐºÑ‚ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ */
 #product_categories select {
 	width: 300px;
 	margin-right: 15px;
@@ -138,20 +138,20 @@
 #product_categories ul li { margin-bottom: 5px; }
 #product_categories div {float: left;	margin-left: 10px; width: 540px; }
 #product_categories span i { font-style: normal; }
-/* Добавление категории */
-#product_categories span.add { 
+/* Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ */
+#product_categories span.add {
 	background-repeat: no-repeat;
 	padding-left: 20px;
 	background-image: url(../images/plus-circle.png);
 }
-/* Удаление категории */
+/* Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ */
 #product_categories span.delete {
 	background-image: url(../images/cross-circle-frame.png);
 	background-repeat: no-repeat;
 	padding-left: 20px;
 }
 
-/* Купоны */
+/* ÐšÑƒÐ¿Ð¾Ð½Ñ‹ */
 #product .block li select.coupon_type {
 	width: 70px;
 	font-size: 18px;
@@ -161,7 +161,7 @@
 	font-size: 18px;
 }
 
-/* Варианты товара */
+/* Ð’Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ Ñ‚Ð¾Ð²Ð°Ñ€Ð° */
 #variants_block {
 	background-color: #f0f0f0;
 	border: 1px dotted #d0d0d0;
@@ -203,12 +203,13 @@
 	padding-top: 2px;
 	margin-left: 2px;
 }
+/* ÐœÐ¾Ð´ÑƒÐ»ÑŒÐ½Ð°Ñ Ð´Ð¾ÑÑ‚Ð²ÐºÐ° */
 #variants_block li.variant_move {	width: 20px; height:16px; padding-top: 5px;}
-#variants_block li.variant_name { width: 270px;	padding-left: 5px; }
+#variants_block li.variant_name { width: 240px;	padding-left: 5px; }
 #variants_block li.variant_name input {
 	font-size: 16px;
 	color: #000;
-	width: 220px;
+	width: 208px;
 	float: left;
 	margin-right: 2px;
 }
@@ -216,23 +217,38 @@
 	display: block;
 	padding-top: 6px;
 }
-#variants_block li.variant_sku { width: 120px; }
-#variants_block li.variant_sku input { width: 95px; }
-#variants_block li.variant_price { width: 120px; }
+#variants_block li.variant_sku { width: 100px; }
+#variants_block li.variant_sku input { width: 85px; }
+#variants_block li.variant_price { width: 110px; }
 #variants_block li.variant_price input {
 	width: 95px;
 	font-size: 15px;
 	font-weight: bold;
 	color: #000;
 }
-#variants_block li.variant_discount { width: 95px; }
+#variants_block li.variant_discount { width: 85px; }
 #variants_block li.variant_discount input { width: 70px; }
-#variants_block li.variant_amount { width: 90px; font-size: 11px; }
+#variants_block li.variant_amount { width: 71px; font-size: 11px; }
 #variants_block li.variant_amount input { width: 35px; margin-right: 2px; }
 #variants_block li.variant_download { width: 180px;}
 #variants_block li.variant_download input{ width: 170px; font-size: 9px; margin-top: 2px;}
 #variants_block li.variant_download .add_attachment img{  margin-top: 4px;}
+.variant_sizes {
+    width: 52px;
+}
 
+.variant_sizes input {
+    width: 42px;
+}
+
+#variants_block li.variant_amount {
+    width: 71px;
+}
+
+.variant_sizes.variant_length {
+    width: 57px;
+}
+/* ÐœÐ¾Ð´ÑƒÐ»ÑŒÐ½Ð°Ñ Ð´Ð¾ÑÑ‚Ð²ÐºÐ° end */
 
 #variants_block span.add {
 	margin-left: 30px;
@@ -240,7 +256,7 @@
 	margin-top: 5px;
 	display: block;
 	background-repeat: no-repeat;
-	padding-left: 20px;	
+	padding-left: 20px;
 	background-image: url(../images/plus-circle.png);
 }
 #variants_block .variant_move div{
@@ -248,8 +264,8 @@
 	height: 16px;
 }
 
-/* Одиночный вариант */
-#variants_block.single_variant ul li.variant_name, 
+/* ÐžÐ´Ð¸Ð½Ð¾Ñ‡Ð½Ñ‹Ð¹ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚ */
+#variants_block.single_variant ul li.variant_name,
 #variants_block.single_variant ul li.variant_move
 #variants_block.single_variant #add_variant
 { display: none; }
@@ -287,10 +303,10 @@
 	margin-top: -5px;
 	background-repeat: repeat-x;
 	background-image: url('../images/gradient.jpg');
-	background-position: top;	
+	background-position: top;
 }
 .layer ul{
-	margin-bottom: 20px;	
+	margin-bottom: 20px;
 }
 #product .block {
 	margin-bottom: 20px;
@@ -313,15 +329,15 @@
 	overflow: hidden;
 	color: #808080;
 }
-#product .block li input[type=text] { width: 265px; font-size:13px; height:18px;} 
-#product .block ul.new_features li label input { margin-top: -2px; width: 150px; font-size:13px; height:18px;} 
+#product .block li input[type=text] { width: 265px; font-size:13px; height:18px;}
+#product .block ul.new_features li label input { margin-top: -2px; width: 150px; font-size:13px; height:18px;}
 #product .block li select {width: 265px; font-size: 13px; height:25px;}
 #product .block li textarea {
 	width: 265px;
 	height: 60px;
 }
 #product .block select.multiple_categories {width: 440px; height:400px; font-size: 13px;}
-#product .block span.add { 
+#product .block span.add {
 	background-repeat: no-repeat;
 	padding-left: 20px;
 	background-image: url(../images/plus-circle.png);
@@ -355,9 +371,9 @@
 	margin-right: 7px;
 	margin-bottom: 7px;
 	background-color: #ffffff;
-	display: -moz-inline-box; 
-	display: inline-block; 
-	*zoom: 1; 
+	display: -moz-inline-box;
+	display: inline-block;
+	*zoom: 1;
 	*display: inline;
 	word-spacing: normal;
 	line-height: 100px;
@@ -381,7 +397,7 @@
 #product .images li:hover a.delete{
 	visibility: visible;
 }
-#dropZone { 
+#dropZone {
 	margin-bottom: 10px;
 	margin-right: 16px;
 	margin-top: -20px;
@@ -396,7 +412,7 @@
 	height: 45px;
 	margin-top: 25px;
 }
-.dropInput { 
+.dropInput {
 	margin-top: -70px;
 	position: absolute;
 	width: 100%;
@@ -406,7 +422,7 @@
 	-moz-opacity: 0;
 	filter: alpha(opacity=0);
 }
- 
+
 #product .related_products .image{
 	width: 35px;
 }
@@ -415,13 +431,13 @@
 #product div.images  span.upload_image, #product div.images  span.add_image_url{
 	margin-top: 5px;
 	background-repeat: no-repeat;
-	padding-left: 20px;	
+	padding-left: 20px;
 	margin-right: 5px;
-} 
+}
 #product div.images  span.upload_image { background-image: url(../images/picture_add.png); }
 #product div.images  span.add_image_url { background-image: url(../images/world_link.png); margin-left: 5px;}
 
-#product div.images input.upload_image, #product div.images input.remote_image{ 
+#product div.images input.upload_image, #product div.images input.remote_image{
 	font-size: 12px;
 	margin-bottom: 15px;
 	width: 300px;
@@ -448,14 +464,14 @@
 }
 /* @end */
 
-/* Меню */
+/* ÐœÐµÐ½ÑŽ */
 #right_menu {
 	width: 180px;
 	display: block;
 	float: right;
 	margin-left: 40px;
 }
-#right_menu ul { 
+#right_menu ul {
 	margin: 5px;
 	margin-bottom: 30px;
 }
@@ -470,7 +486,7 @@
 }
 #right_menu li a {
 	padding: 0px 0px 0px 0px;
-	color: #000000; 
+	color: #000000;
 }
 #right_menu li a:hover { color: #00a8ff; }
 
@@ -482,18 +498,18 @@
 }
 #right_menu .drop_active a{
 	color: green;
-	//background-color: #c4ffb2; 
+	//background-color: #c4ffb2;
 }
 #right_menu .drop_hover a{
 	color: white;
-	background-color: #4eee00; 
+	background-color: #4eee00;
 }
-/* @end меню */
+/* @end Ð¼ÐµÐ½ÑŽ */
 
 
-/* @group Форма поиска */
+/* @group Ð¤Ð¾Ñ€Ð¼Ð° Ð¿Ð¾Ð¸ÑÐºÐ° */
 #search {
-	float: right;	
+	float: right;
 	width: 175px;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -516,9 +532,9 @@
 	cursor: hand;
 }
 /* @end */
- 
- 
-/* @group Постраничная навигация */
+
+
+/* @group ÐŸÐ¾ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ‡Ð½Ð°Ñ Ð½Ð°Ð²Ð¸Ð³Ð°Ñ†Ð¸Ñ */
 #pagination {
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -563,7 +579,7 @@
 /* @end */
 
 
-/* @group Свернуть - развернуть варианты */
+/* @group Ð¡Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒ - Ñ€Ð°Ð·Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ñ‹ */
 div#expand
 {
 	margin-bottom: 10px;
@@ -577,7 +593,7 @@ div#expand a
 }
 /* @end */
 
-/* @group Ссылки для сортировки */
+/* @group Ð¡ÑÑ‹Ð»ÐºÐ¸ Ð´Ð»Ñ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ */
 div#sort_links
 {
 	margin-bottom: 10px;
@@ -590,7 +606,7 @@ div#sort_links a
 }
 /* @end */
 
-/* @group Список */
+/* @group Ð¡Ð¿Ð¸ÑÐ¾Ðº */
 #main_list.brands{ width:600px; }
 #main_list.categories{ width:600px; }
 #main_list.features{ width:600px; }
@@ -619,7 +635,7 @@ div#sort_links a
 	background-color: #ebebeb;
 }
 #list .cell {
-	vertical-align: top; 
+	vertical-align: top;
 	padding: 0px;
 	padding-top: 10px;
 	padding-bottom: 7px;
@@ -702,7 +718,7 @@ div#sort_links a
 
 #list .group_name {
 	width:250px;
-	padding-left: 10px;	
+	padding-left: 10px;
 }
 #list .group_discount {
 	width:90px;
@@ -733,27 +749,27 @@ div#sort_links a
 
 #list .variants a.expand_variant, #list .product_name a.roll_up_variant{
 	color: #008fe9 !important;
-	border-bottom-color: #008fe9 !important;	
+	border-bottom-color: #008fe9 !important;
 	font-size: 11px !important;
 }
 #list .variants {
-	float:right; 
+	float:right;
 	margin-top: -3px;
 	font-size: 12px;
 	color: #707070;
 	padding-left:10px;
 	text-align: right;
 }
-#list .variants ul li{ 
+#list .variants ul li{
 	text-align: right;
 	margin-bottom: 2px;
 	overflow: hidden;
 }
-#list .variants ul i{ 
+#list .variants ul i{
 	font-style:normal;
 	padding-bottom: 2px;
 	overflow: hidden;
-} 
+}
 #list .variants ul .price {
 	font-size: 14px;
 	width: 80px;
@@ -785,14 +801,14 @@ div#sort_links a
 
 #list .invisible .name a{
 	color: #909090;
-	border-bottom-color: #909090;	
+	border-bottom-color: #909090;
 }
 
 #list .row .name{ color: #000000; }
 
 #list .row .name a{
 	color: #000000;
-	border-bottom-color: #000000;	
+	border-bottom-color: #000000;
 }
 
 #list .coupon_name {
@@ -812,7 +828,7 @@ div#sort_links a
 
 span.order_label_big
 {
-	float:left; 
+	float:left;
 	display: block;
 	padding:0px;
 	width:32px;
@@ -824,7 +840,7 @@ span.order_label_big
 
 span.order_label
 {
-	float:left; 
+	float:left;
 	display: block;
 	padding:0px;
 	width:16px;
@@ -868,7 +884,7 @@ span.order_label
     zoom:1;
 	background-position: center center;
 	background-repeat: no-repeat;
-	
+
 }
 .icons  a.enable				{ background-image: url(../images/lightbulb.png); }
 .invisible .icons a.enable		{ background-image: url(../images/lightbulb_off.png); }
@@ -927,7 +943,7 @@ span.order_label
 	text-align: right;
 }
 
-/* Хэлпер для мультисорта */
+/* Ð¥ÑÐ»Ð¿ÐµÑ€ Ð´Ð»Ñ Ð¼ÑƒÐ»ÑŒÑ‚Ð¸ÑÐ¾Ñ€Ñ‚Ð° */
 
 .sort-multi-helper{
 	border-top: 1px solid #D0D0D0
@@ -941,7 +957,7 @@ span.order_label
 }
 
 
-/* @group Комментарии */
+/* @group ÐšÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸ */
 #list .row.unapproved {
 	background-color: #fffde5;
 }
@@ -1010,7 +1026,7 @@ textarea.editor_small{
 /* @end */
 
 
-/* Валюты */
+/* Ð’Ð°Ð»ÑŽÑ‚Ñ‹ */
 #currencies_block {
 	background-color: #f0f0f0;
 	border: 1px dotted #d0d0d0;
@@ -1071,7 +1087,7 @@ textarea.editor_small{
 #currencies_block li.sign input { width: 95px; }
 #currencies_block li.iso { width: 120px; }
 #currencies_block li.iso input { width: 95px;}
-#currencies_block li.rate input { width: 50px; 
+#currencies_block li.rate input { width: 50px;
 	font-size: 15px;
 	font-weight: bold;
 	color: #000;
@@ -1085,7 +1101,7 @@ textarea.editor_small{
 	margin-top: 5px;
 	display: block;
 	background-repeat: no-repeat;
-	padding-left: 20px;	
+	padding-left: 20px;
 	background-image: url(../images/plus-circle.png);
 }
 #currencies_block .variant_move div{
@@ -1103,7 +1119,7 @@ span.alert {
 }
 
 
-/* Заказы */
+/* Ð—Ð°ÐºÐ°Ð·Ñ‹ */
 #list .note{
 	width: 100%;
 	clear: both;
@@ -1146,13 +1162,13 @@ div#order_details div#user
 }
 .order_details input[type=text]
 {
-	width:100%;	
+	width:100%;
 	margin-bottom: 10px;
 }
 
 .order_details textarea
 {
-	width:100%;	
+	width:100%;
 	height:40px;
 	margin-bottom: 10px;
 }
@@ -1250,7 +1266,7 @@ form#order div.delivery input[type="text"]{width:80px;font-size: 14px;}
 form#order div.delivery span.currency{font-size: 14px;}
 form#order div.delivery div.separate_delivery{float:right;}
 form#order div.delivery div.separate_delivery input{width: auto;}
- 
+
 form#order div.payment select{font-size: 14px; margin-right: 10px; width: 250px;}
 form#order div.payment input{font-size: 14px;}
 form#order div.payment label{font-size: 14px;}
@@ -1261,7 +1277,7 @@ form#order div.edit_user{margin-bottom: 15px;}
 form#order div.block_save{margin-top: 15px; margin-right: -15px;}
 
 
-/* Импорт */
+/* Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚ */
 input.import_file {
 	width: 600px;
 	font-size: 18px;
@@ -1320,7 +1336,7 @@ ul#import_result li .status
 ul#import_result li .added { background-image: url(../images/accept.png); }
 ul#import_result li .updated { background-image: url(../images/update.png); }
 
-/* Темы */
+/* Ð¢ÐµÐ¼Ñ‹ */
 ul.themes
 {
 	width: 100%;
@@ -1441,20 +1457,20 @@ h1.locked{
 }
 div.upload_image{
 	margin-bottom: 20px;
-} 
+}
 div.upload_image span#upload_image{
 	margin-top: 5px;
 	background-repeat: no-repeat;
-	padding-left: 20px;	
+	padding-left: 20px;
 	margin-right: 5px;
-} 
+}
 div.upload_image span#upload_image{ background-image: url(../images/picture_add.png); }
 div.upload_image input{
 	display: block;
 	width: 400px;
 	margin-top:10px;
 	font-size: 14px;
-} 
+}
 
 
 .input_autocomplete{
