@@ -172,6 +172,9 @@ if(!empty($result->error))
 {
     // чтобы случайно не передать барахла в заказ, сбросим если пусто
     unset($_SESSION['delivery_dellinii']);
+    $_SESSION['delivery_dellinii']['error'] = $result->error;
+    $_SESSION['delivery_dellinii']['errors'] = $result->errors;
+    $_SESSION['delivery_dellinii']['price'] = 0;
 }
 else
 {
@@ -181,7 +184,7 @@ else
             foreach ($city['terminals']['terminal'] as $terminal)
             {
                 if($terminal['addressCode']['street_code'] == $dellinii_terminal)
-                    $_SESSION['delivery_dellinii']['terminal_info'] = $terminal['name'] . ' | ' . $terminal['fullAddress'] . ' | ' . $terminal['phones'][0]['number'];
+                    $_SESSION['delivery_dellinii']['delivery_info'] = $terminal['name'] . ' | ' . $terminal['fullAddress'] . ' | ' . $terminal['phones'][0]['number'];
             }
     }
 }
