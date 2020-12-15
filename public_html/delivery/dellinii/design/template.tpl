@@ -33,10 +33,10 @@
         {/if}
     </select>
 
-    {if $delivery_answer}
+    {if $delivery_answer->price > 0}
         <div>
-        {$delivery_answer->price} <br/>
-        {$delivery_answer->time->nominative}
+            {$delivery_answer->price} <br />
+            {$delivery_answer->time->nominative}
         </div>
     {/if}
 {/if}
