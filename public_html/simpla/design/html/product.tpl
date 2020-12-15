@@ -571,12 +571,12 @@ overflow-y: auto;
 			<li class="variant_price">Цена, {$currency->sign}</li>
 			<li class="variant_discount">Старая, {$currency->sign}</li>
 			<li class="variant_amount">Кол-во</li>
-			{* Модульная доствка 1 *}
-			<li class="variant_sizes variant_height">Выс.</li>
-			<li class="variant_sizes variant_width">Шир.</li>
+			{* Модульная доставка 1 - Заголовок вариантов *}
 			<li class="variant_sizes variant_length">Длин.</li>
+			<li class="variant_sizes variant_width">Шир.</li>
+			<li class="variant_sizes variant_height">Выс.</li>
 			<li class="variant_sizes variant_weight">Вес</li>
-			{* Модульная доствка 1 end *}
+			{* Модульная доставка 1 end *}
 		</ul>
 		<div id="variants">
 		{foreach $product_variants as $variant}
@@ -588,20 +588,20 @@ overflow-y: auto;
 			<li class="variant_discount">  <input name="variants[compare_price][]" type="text"   value="{$variant->compare_price|escape}" /></li>
 			<li class="variant_amount">    <input name="variants[stock][]"         type="text"   value="{if $variant->infinity || $variant->stock == ''}∞{else}{$variant->stock|escape}{/if}" />{$settings->units}</li>
 
-			{* Модульная доствка 2 *}
-			<li class="variant_sizes variant_height">
-				<input name="variants[height][]" type="text" value="{$variant->height}" />
+			{* Модульная доставка 2 - Все варианты *}
+			<li class="variant_sizes variant_length">
+			    <input name="variants[length][]" type="text" value="{$variant->length}" />
 			</li>
 			<li class="variant_sizes variant_width">
 			    <input name="variants[width][]" type="text" value="{$variant->width}" />
 			</li>
-			<li class="variant_sizes variant_length">
-			    <input name="variants[length][]" type="text" value="{$variant->length}" />
+			<li class="variant_sizes variant_height">
+				<input name="variants[height][]" type="text" value="{$variant->height}" />
 			</li>
 			<li class="variant_sizes variant_weight">
 				<input name="variants[weight][]" type="text" value="{$variant->weight}" />
 			</li>
-			{* Модульная доствка 2 end*}
+			{* Модульная доставка 2 end*}
 
 			<li class="variant_download">
 
@@ -629,17 +629,20 @@ overflow-y: auto;
 			<li class="variant_discount"><input name="variants[compare_price][]" type="" value="" /></li>
 			<li class="variant_amount"><input name="variants[stock][]" type="" value="∞" />{$settings->units}</li>
 
-			{* Модульная доствка 3 *}
-			<li class="variant_sizes variant_height">
-			    <input name="variants[height][]" type="text" value="" />
+			{* Модульная доставка 3 - новый вариант *}
+			<li class="variant_sizes variant_length">
+			    <input name="variants[length][]" type="text" value="" />
 			</li>
 			<li class="variant_sizes variant_width">
 			    <input name="variants[width][]" type="text" value="" />
 			</li>
-			<li class="variant_sizes variant_length">
-			    <input name="variants[length][]" type="text" value="" />
+			<li class="variant_sizes variant_height">
+			    <input name="variants[height][]" type="text" value="" />
 			</li>
-			{* Модульная доствка 3 end*}
+			<li class="variant_sizes variant_weight">
+			    <input name="variants[weight][]" type="text" value="" />
+			</li>
+			{* Модульная доставка 3 end*}
 
 			<li class="variant_download">
 				<a href='#' class=add_attachment><img src="design/images/cd_add.png" alt="" /></a>
