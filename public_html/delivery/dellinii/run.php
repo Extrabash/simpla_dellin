@@ -181,11 +181,11 @@ $result->printed_tpl = $simpla->design->fetch('delivery/dellinii/design/template
 // Или информацию почему не посчиталось
 if(!empty($result->error))
 {
-    // чтобы случайно не передать барахла в заказ, сбросим
-    unset($_SESSION['delivery_dellinii']);
+    // чтобы случайно не передать барахла в заказ, сбросим если пусто
+    unset($_SESSION['delivery_dellinii']['delivery_info']);
+    unset($_SESSION['delivery_dellinii']['price']);
     $_SESSION['delivery_dellinii']['error'] = $result->error;
     $_SESSION['delivery_dellinii']['errors'] = $result->errors;
-    $_SESSION['delivery_dellinii']['price'] = 0;
 }
 else
 {
@@ -198,6 +198,7 @@ else
                     $_SESSION['delivery_dellinii']['delivery_info'] = $terminal['name'] . ' | ' . $terminal['fullAddress'] . ' | ' . $terminal['phones'][0]['number'];
             }
     }
+    $result->delivery_info = $_SESSION['delivery_dellinii']['delivery_info'];
 }
 
 header("Content-type: application/json; charset=UTF-8");
