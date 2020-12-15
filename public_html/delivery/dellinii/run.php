@@ -183,10 +183,10 @@ $result->printed_tpl = $simpla->design->fetch('delivery/dellinii/design/template
 // Дополнительно для формирования заказа. нам необходимо записать в сессию не только
 // нечитаемые айди, но и информацию для менеджера, куда нужно отпарвлять всю шляпу
 // Или информацию почему не посчиталось
+unset($_SESSION['delivery_dellinii']['delivery_info']);
 if(!empty($result->error))
 {
     // чтобы случайно не передать барахла в заказ, сбросим если пусто
-    unset($_SESSION['delivery_dellinii']['delivery_info']);
     unset($_SESSION['delivery_dellinii']['price']);
     $_SESSION['delivery_dellinii']['error'] = $result->error;
     $_SESSION['delivery_dellinii']['errors'] = $result->errors;
