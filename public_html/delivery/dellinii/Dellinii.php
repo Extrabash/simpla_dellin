@@ -6,7 +6,7 @@
  * Time: 11:59
  */
 
-class DellindeliveryApicore extends Simpla
+class DellindeliveryApicore
 {
     /**
      * Ключ АПИ

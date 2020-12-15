@@ -19,6 +19,14 @@ $simpla = new Simpla();
 
 $cart = $simpla->cart->get_cart();
 $error = '';
+$result = new stdClass();
+
+// Очистим ошибки и цены, чтобы они не вылезли в заказе с другим рассчетом
+unset($_SESSION['delivery_dellinii']['error']);
+unset($_SESSION['delivery_dellinii']['errors']);
+unset($_SESSION['delivery_dellinii']['price']);
+
+
 if(!empty($cart->purchases))
 {
     $total_weight = 0;
@@ -53,9 +61,11 @@ if(!empty($cart->purchases))
                 $error = 'Ошибка габаритов товара.'; // Достаточно одного товара без размеров
         }
     }
+
     $max_length = $dellinii->convertMMtoM($max_length);
     $max_width  = $dellinii->convertMMtoM($max_width);
     $max_height = $dellinii->convertMMtoM($max_height);
+
     $simpla->design->assign('total_weight',	$total_weight);
     $simpla->design->assign('max_length',	$max_length);
     $simpla->design->assign('max_width',	$max_width);
@@ -171,7 +181,7 @@ $result->printed_tpl = $simpla->design->fetch('delivery/dellinii/design/template
 // Или информацию почему не посчиталось
 if(!empty($result->error))
 {
-    // чтобы случайно не передать барахла в заказ, сбросим если пусто
+    // чтобы случайно не передать барахла в заказ, сбросим
     unset($_SESSION['delivery_dellinii']);
     $_SESSION['delivery_dellinii']['error'] = $result->error;
     $_SESSION['delivery_dellinii']['errors'] = $result->errors;
