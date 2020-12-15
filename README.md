@@ -82,9 +82,10 @@
 
 #### Научим админку работать с новыми данными
 
-###### Габариты в simpla/design/html/product.tpl:
 
 Смотреть соответствующий файл:
+
+###### Габариты в simpla/design/html/product.tpl:
 
     {* Модульная доставка 1 - Заголовок вариантов *}
     <li class="variant_sizes variant_length">Длин.</li>
@@ -140,6 +141,67 @@
     .variant_sizes.variant_height {
         width: 57px;
     }
+
+###### Модули и настройки в simpla/design/html/delivery.tpl:
+
+    {* Модульная доставка 1 - выбор модуля *}
+	<div id="product_categories">
+	    <select name="module">
+			<option value='null'>Ручная обработка</option>
+	        {foreach $delivery_modules as $delivery_module}
+    	        <option value='{$delivery_module@key|escape}' {if $delivery->module == $delivery_module@key}selected{/if} >{$delivery_module->name|escape}</option>
+			{/foreach}
+	    </select>
+	</div>
+	{* Модульная доставка 1 end *}
+
+    {* Модульная доставка 2 - настрйоки модуля *}
+		{if $delivery_modules[$delivery->module]->settings}
+		<div class="block layer">
+			<h2>Настройки - {$delivery_modules[$delivery->module]->name}</h2>
+			{* Параметры модуля доставки *}
+			<ul>
+			   	{foreach $delivery_modules[$delivery->module]->settings as $setting}
+    			    {$variable_name = $setting->variable}
+    			    {if $setting->options|@count>1}
+        			    <li><label class=property>{$setting->name}</label>
+        			        <select name="delivery_settings[{$setting->variable}]">
+        			            {foreach $setting->options as $option}
+            			            <option value='{$option->value}' {if $option->value==$delivery_settings[$setting->variable]}selected{/if}>{$option->name|escape}</option>
+        			            {/foreach}
+        			        </select>
+        			    </li>
+    			    {elseif $setting->options|@count==1}
+        			    {$option = $setting->options|@first}
+        			    <li><label class="property" for="{$setting->variable}">{$setting->name|escape}</label><input name="delivery_settings[{$setting->variable}]" class="simpla_inp" type="checkbox" value="{$option->value|escape}" {if $option->value==$delivery_settings[$setting->variable]}checked{/if} id="{$setting->variable}" /> <label for="{$setting->variable}">{$option->name}</label></li>
+    			    {else}
+        			    <li><label class="property" for="{$setting->variable}">{$setting->name|escape}</label><input name="delivery_settings[{$setting->variable}]" class="simpla_inp" type="text" value="{$delivery_settings[$setting->variable]|escape}" id="{$setting->variable}" /></li>
+    			    {/if}
+			    {/foreach}
+			</ul>
+			{* END Параметры модуля доставки *}
+		</div>
+		{/if}
+		{* Модульная доставка 2 end *}
+
+###### Научимся это дело сохранять и вызывать в simpla/DeliveryAdmin.php:
+
+    $delivery->separate_payment	= $this->request->post('separate_payment');
+
+    // Модульная доставка 1
+    $delivery->module			= $this->request->post('module', 'string');
+    $delivery_settings 			= $this->request->post('delivery_settings');
+
+Дальше
+
+        $delivery_payments = $this->delivery->get_delivery_payments($delivery->id);
+        // Модульная доставка 3
+        $delivery_settings = $this->delivery->get_delivery_settings($delivery->id);
+    }
+
+    $this->design->assign('delivery_payments', $delivery_payments);
+    // Модульная доставка 4
+    $this->design->assign('delivery_settings', $delivery_settings);
 
 ##### Выведем модуль в шаблон корзины
 

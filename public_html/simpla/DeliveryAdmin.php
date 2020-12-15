@@ -16,10 +16,10 @@ class DeliveryAdmin extends Simpla
 	 		$delivery->price            = $this->request->post('price');
 	 		$delivery->free_from        = $this->request->post('free_from');
 			$delivery->separate_payment	= $this->request->post('separate_payment');
-			$delivery->module			= $this->request->post('module', 'string');
 
-			// Модуль доставки - настройки 1
-			$delivery_settings = $this->request->post('delivery_settings');
+			// Модульная доставка 1/4
+			$delivery->module			= $this->request->post('module', 'string');
+			$delivery_settings 			= $this->request->post('delivery_settings');
 
 	 		if(!$delivery_payments = $this->request->post('delivery_payments'))
 	 			$delivery_payments = array();
@@ -42,7 +42,7 @@ class DeliveryAdmin extends Simpla
 					}
 
 					$this->delivery->update_delivery_payments($delivery->id, $delivery_payments);
-					// Модуль доставки - настройки 2
+					// Модульная доставка 2/4
 					$this->delivery->update_delivery_settings($delivery->id, $delivery_settings);
 		        }
 		}
@@ -54,14 +54,13 @@ class DeliveryAdmin extends Simpla
 				$delivery = $this->delivery->get_delivery($delivery->id);
 			}
 			$delivery_payments = $this->delivery->get_delivery_payments($delivery->id);
+			// Модульная доставка 3/4
 			$delivery_settings = $this->delivery->get_delivery_settings($delivery->id);
 		}
 
-
-		$this->design->assign('delivery_settings', $delivery_settings);
-
-		// Модуль доставки - настройки 3
 		$this->design->assign('delivery_payments', $delivery_payments);
+		// Модульная доставка 4/4
+		$this->design->assign('delivery_settings', $delivery_settings);
 
 		// Все способы оплаты
 		$payment_methods = $this->payment->get_payment_methods();

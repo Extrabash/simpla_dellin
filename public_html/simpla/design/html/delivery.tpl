@@ -49,17 +49,21 @@
 		</div>
 	</div>
 
+	{* Модульная доставка 1 - выбор модуля *}
 	<div id="product_categories">
 	    <select name="module">
 			<option value='null'>Ручная обработка</option>
 	        {foreach $delivery_modules as $delivery_module}
     	        <option value='{$delivery_module@key|escape}' {if $delivery->module == $delivery_module@key}selected{/if} >{$delivery_module->name|escape}</option>
-	        {/foreach}
+			{/foreach}
 	    </select>
 	</div>
+	{* Модульная доставка 1 end *}
 
 	<!-- Левая колонка свойств товара -->
 	<div id="column_left">
+
+		{* Модульная доставка 2 - настрйоки модуля *}
 		{if $delivery_modules[$delivery->module]->settings}
 		<div class="block layer">
 			<h2>Настройки - {$delivery_modules[$delivery->module]->name}</h2>
@@ -86,6 +90,8 @@
 			{* END Параметры модуля доставки *}
 		</div>
 		{/if}
+		{* Модульная доставка 2 end *}
+
 		<!-- Параметры страницы -->
 		<div class="block layer">
 			<h2>Стоимость доставки</h2>
