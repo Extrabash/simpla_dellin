@@ -155,7 +155,7 @@
 	</div>
 	{* Модульная доставка 1 end *}
 
-
+И
 
     {* Модульная доставка 2 - настрйоки модуля *}
     {if $delivery_modules[$delivery->module]->settings}
@@ -190,21 +190,90 @@
 
     $delivery->separate_payment	= $this->request->post('separate_payment');
 
-    // Модульная доставка 1
+    // Модульная доставка 1/5
     $delivery->module			= $this->request->post('module', 'string');
     $delivery_settings 			= $this->request->post('delivery_settings');
+
+Ниже
+
+    $this->delivery->update_delivery_payments($delivery->id, $delivery_payments);
+    // Модульная доставка 2/5
+    $this->delivery->update_delivery_settings($delivery->id, $delivery_settings);
 
 Дальше
 
         $delivery_payments = $this->delivery->get_delivery_payments($delivery->id);
-        // Модульная доставка 3
+        // Модульная доставка 3/5
         $delivery_settings = $this->delivery->get_delivery_settings($delivery->id);
     }
 
     $this->design->assign('delivery_payments', $delivery_payments);
-    // Модульная доставка 4
+    // Модульная доставка 4/5
     $this->design->assign('delivery_settings', $delivery_settings);
+
+В конце нужно не забыть
+
+    // Все способы оплаты
+    $payment_methods = $this->payment->get_payment_methods();
+    $this->design->assign('payment_methods', $payment_methods);
+
+    // Модульная доставка 5/5
+    // Вызовем модули доставки в шаблон
+    $delivery_modules = $this->delivery->get_delivery_modules();
+    $this->design->assign('delivery_modules', $delivery_modules);
+
+###### Информацию по заказу в simpla/design/html/order.tpl:
+
+    <div class="separate_delivery">
+        <input type=checkbox id="separate_delivery" name=separate_delivery value='1' {if $order->separate_delivery}checked{/if}> <label  for="separate_delivery">оплачивается отдельно</label>
+    </div>
+    {* Модульная доставка 1/1 *}
+    {if $order->delivery_info}
+    <br /><br /><br />
+    <div class="delivery_info">
+        <h3>Информация от модуля доставки</h3>
+        <br />
+        <ul>
+        {foreach from=$order->delivery_info item=info key=name}
+            <li><b>{$name}</b>:{$info}</li>
+        {/foreach}
+        </ul>
+    </div>
+    {/if}
+    {* Модульная доставка 1/1 end *}
+
+---
 
 ##### Выведем модуль в шаблон корзины
 
-##### Добавим к оформлению заказа
+В вашем дизайне, в удобном месте перебора {foreach $deliveries as $delivery}:
+
+    {* Модульная доставка 1/1 *}
+    {if $delivery->module}
+    <script src="delivery/{$delivery->module}/ajax.js" type="text/javascript"></script>
+    <label for="deliveries_{$delivery->id}">
+        <div class="description ajax_part" data-delivery_id="{$delivery->id}" id="delivery_{$delivery->module}">
+            {* Сюда подгрузим через аякс по айди то что хотим *}
+            Загрузка...
+        </div>
+    </label>
+    {/if}
+    {* Модульная доставка 1/1 end *}
+
+##### Добавим к оформлению заказа view/CartView.tpl
+
+    // Стоимость доставки
+    $delivery = $this->delivery->get_delivery($order->delivery_id);
+    // Модульная доставка
+    if(!empty($delivery->module))
+    {
+        $delivery_info = serialize($_SESSION['delivery_'.$delivery->module]);
+        $delivery->price = $_SESSION['delivery_'.$delivery->module]['price'];
+        $this->orders->update_order($order->id, array('delivery_info'=>$delivery_info));
+    }
+
+    if(!empty($delivery) && $delivery->free_from > $order->total_price)
+    {
+        $this->orders->update_order($order->id, array('delivery_price'=>$delivery->price, 'separate_delivery'=>$delivery->separate_payment));
+    }
+

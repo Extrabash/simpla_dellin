@@ -192,15 +192,17 @@ $("input[name='coupon_code']").keypress(function(event){
 			{/if}
 			</label>
 			</h3>
+			{* Модульная доставка 1/1 *}
 			{if $delivery->module}
 			<script src="delivery/{$delivery->module}/ajax.js" type="text/javascript"></script>
 			<label for="deliveries_{$delivery->id}">
-			<div class="description ajax_part" data-delivery_id="{$delivery->id}" id="delivery_{$delivery->module}">
-			{* Сюда подгрузим через аякс по айди то что хотим *}
-			Загрузка...
-			</div>
+				<div class="description ajax_part" data-delivery_id="{$delivery->id}" id="delivery_{$delivery->module}">
+					{* Сюда подгрузим через аякс по айди то что хотим *}
+					Загрузка...
+				</div>
 			</label>
 			{/if}
+			{* Модульная доставка 1/1 end *}
 			<div class="description">
 			{$delivery->description}
 			</div>

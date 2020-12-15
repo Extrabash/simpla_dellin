@@ -6,8 +6,6 @@
  * Time: 11:59
  */
 
-require_once('api/Simpla.php');
-
 class DellindeliveryApicore extends Simpla
 {
     /**
