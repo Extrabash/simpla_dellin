@@ -124,7 +124,11 @@ if(empty($error))
             if(!empty($_SESSION['delivery_dellinii']['dellinii_city']))
                 $dellinii_city = $_SESSION['delivery_dellinii']['dellinii_city'];
         else
+        {
             $_SESSION['delivery_dellinii']['dellinii_city'] = $dellinii_city;
+            // Если записали новый город, нужно стереть предыдущий терминал, а то рассчитает до него
+            unset($_SESSION['delivery_dellinii']['dellinii_terminal']);
+        }
 
         if(empty($dellinii_terminal))
             if(!empty($_SESSION['delivery_dellinii']['dellinii_terminal']))
