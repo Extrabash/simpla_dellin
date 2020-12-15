@@ -3,14 +3,14 @@
 {if $terminals}
     <select name="dellinii_city" class="dellinii_step step_1" autocomplete="off" readonly
         onfocus="this.removeAttribute('readonly')">
-        <option value="">Выберите город</option>
+        <option disabled {if !$dellinii_city}selected{/if} value="">Выберите город</option>
         {foreach $terminals['city'] as $city}
             <option value="{$city['cityID']}" {if $dellinii_city==$city['cityID']}selected{/if}>{$city['name']|escape}</option>
         {/foreach}
     </select>
 
     <select name="dellinii_terminal" {if !$dellinii_city}disabled{/if} class="dellinii_step step_2" autocomplete="off" readonly onfocus="this.removeAttribute('readonly')">
-        <option value="">Выберите терминал</option>
+        <option disabled {if !$dellinii_terminal}selected{/if} value="">Выберите терминал</option>
         {if $dellinii_city}
         {foreach $terminals['city'] as $city}
             {if $dellinii_city==$city['cityID']}
