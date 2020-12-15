@@ -26,7 +26,9 @@
 
 ---
 
-##### Научим варианты товаров сохранять и вызывать габариты api/Variants.php, можно ипользовать приложенный файл, но если стоят иные модификации, или же это клон симплы, то:
+### Разберемся с api/, можно ипользовать приложенные файлы, но если стоят иные модификации, или же это клон симплы
+
+##### Научим варианты товаров сохранять и вызывать габариты api/Variants.php:
 
 
 1. get_variants:
@@ -78,3 +80,71 @@
             WHERE v.id=?
             LIMIT 1
         ", $this->settings->max_order_amount, $id);
+
+
+
+##### Научим сохранять и вызывать данные по методам доставки api/Delivery.php:
+
+    // Функция вызова модулей доставки
+	function get_delivery_modules()
+	{
+		$modules_dir = $this->config->root_dir.'delivery/';
+
+		$modules = array();
+		$handler = opendir($modules_dir);
+		while ($dir = readdir($handler))
+		{
+			$dir = preg_replace("/[^A-Za-z0-9]+/", "", $dir);
+			if (!empty($dir) && $dir != "." && $dir != ".." && is_dir($modules_dir.$dir))
+			{
+
+				if(is_readable($modules_dir.$dir.'/settings.xml') && $xml = simplexml_load_file($modules_dir.$dir.'/settings.xml'))
+				{
+					$module = new stdClass;
+
+					$module->name = (string)$xml->name;
+					$module->settings = array();
+
+					foreach($xml->settings as $setting)
+					{
+						$module->settings[(string)$setting->variable] = new stdClass;
+						$module->settings[(string)$setting->variable]->name = (string)$setting->name;
+						$module->settings[(string)$setting->variable]->variable = (string)$setting->variable;
+						$module->settings[(string)$setting->variable]->variable_options = array();
+						foreach($setting->options as $option)
+						{
+							$module->settings[(string)$setting->variable]->options[(string)$option->value] = new stdClass;
+							$module->settings[(string)$setting->variable]->options[(string)$option->value]->name = (string)$option->name;
+							$module->settings[(string)$setting->variable]->options[(string)$option->value]->value = (string)$option->value;
+						}
+					}
+					$modules[$dir] = $module;
+				}
+
+			}
+		}
+		closedir($handler);
+		return $modules;
+
+	}
+
+	function get_delivery_settings($method_id)
+	{
+		$query = $this->db->placehold("SELECT settings FROM __delivery WHERE id=? LIMIT 1", intval($method_id));
+		$this->db->query($query);
+		$settings = $this->db->result('settings');
+
+		$settings = unserialize($settings);
+		return $settings;
+	}
+
+	public function update_delivery_settings($method_id, $settings)
+	{
+		if(!is_string($settings))
+		{
+			$settings = serialize($settings);
+		}
+		$query = $this->db->placehold("UPDATE __delivery SET settings=? WHERE id in(?@) LIMIT 1", $settings, (array)$method_id);
+		$this->db->query($query);
+		return $method_id;
+	}
