@@ -163,6 +163,7 @@ if(empty($error) && !empty($dellinii_terminal))
 }
 
 $result->error = $error;
+$simpla->design->assign('error', $error);
 $result->printed_tpl = $simpla->design->fetch('delivery/dellinii/design/template.tpl');
 
 // Дополнительно для формирования заказа. нам необходимо записать в сессию не только

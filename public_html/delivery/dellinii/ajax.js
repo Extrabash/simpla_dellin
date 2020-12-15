@@ -10,12 +10,14 @@ $(document).ready(function () {
 });
 
 function run_dellinii_ajax(query_data, delivery_name, container) {
+    container.find(".dellinii_step").prop('disabled', true);
+    container.addClass('updating');
     $.ajax({
     url: "delivery/" + delivery_name + "/run.php",
     data: query_data,
     dataType: "json",
     success: function (data) {
-        console.log(data);
+        //console.log(data);
         container.html(data.printed_tpl);
         container.find(".dellinii_step").change(function(){
             let var_name = $(this).attr('name');
@@ -23,6 +25,7 @@ function run_dellinii_ajax(query_data, delivery_name, container) {
             console.log(query_data);
             run_dellinii_ajax(query_data, delivery_name, container);
         });
+        container.removeClass("updating");
     },
     });
 }
