@@ -1,14 +1,15 @@
 {* Запросим в обработчике и получим список городов, сразу *}
 
 {if $terminals}
-    <select name="dellinii_city" class="dellinii_step step_1">
+    <select name="dellinii_city" class="dellinii_step step_1" autocomplete="off" readonly
+        onfocus="this.removeAttribute('readonly')">
         <option value="">Выберите город</option>
         {foreach $terminals['city'] as $city}
             <option value="{$city['cityID']}" {if $dellinii_city==$city['cityID']}selected{/if}>{$city['name']|escape}</option>
         {/foreach}
     </select>
 
-    <select name="dellinii_terminal" {if !$dellinii_city}disabled{/if} class="dellinii_step step_2">
+    <select name="dellinii_terminal" {if !$dellinii_city}disabled{/if} class="dellinii_step step_2" autocomplete="off" readonly onfocus="this.removeAttribute('readonly')">
         <option value="">Выберите терминал</option>
         {if $dellinii_city}
         {foreach $terminals['city'] as $city}
