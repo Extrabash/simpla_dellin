@@ -21,3 +21,56 @@
 
     ALTER TABLE `s_orders`
         ADD `delivery_info` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `delivery_info`;
+
+2) Научим варианты товаров сохранять и вызывать габариты api/Variants.php,
+можно ипользовать приложенный файл, но если стоят иные модификации, или же это клон симплы, то:
+
+get_variants:
+
+    $query = $this->db->placehold("
+            SELECT
+                v.id,
+                v.product_id ,
+                v.price,
+                NULLIF(v.compare_price, 0) as compare_price,
+                v.sku,
+                v.unit,
+                IFNULL(v.stock, ?) as stock,
+                (v.stock IS NULL) as infinity,
+                v.name,
+                v.attachment,
+                v.position,
+                v.length,
+                v.height,
+                v.width,
+                v.weight
+            FROM __variants AS v
+            WHERE 1
+                $product_id_filter
+				$variant_id_filter
+				$instock_filter
+            ORDER BY v.position
+        ", $this->settings->max_order_amount);
+
+get_variant:
+
+    $query = $this->db->placehold("
+            SELECT
+                v.id,
+                v.product_id ,
+                v.price,
+                NULLIF(v.compare_price, 0) as compare_price,
+                v.sku,
+                v.unit,
+                IFNULL(v.stock, ?) as stock,
+                (v.stock IS NULL) as infinity,
+                v.name,
+                v.attachment,
+                v.length,
+                v.height,
+                v.width,
+                v.weight
+            FROM __variants v
+            WHERE v.id=?
+            LIMIT 1
+        ", $this->settings->max_order_amount, $id);
